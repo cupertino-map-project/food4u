@@ -1,6 +1,7 @@
 # food4u
 
 A new Flutter project.
+Food Delivery Application created by team Cupertino for Mobile Application Programming SCSJ3623
 
 ## Getting Started
 
