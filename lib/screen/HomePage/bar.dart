@@ -6,6 +6,13 @@ class Bar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(title: Text('Food4U'));
+    return Scaffold(
+        appBar:
+            AppBar(title: const Text('Find Food Near You'), actions: <Widget>[
+      IconButton(
+        icon: const Icon(Icons.food_bank),
+        onPressed: () {},
+      ),
+    ]));
   }
 }
