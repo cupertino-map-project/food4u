@@ -54,6 +54,7 @@ flutter:
       - assets/Food4U.png
       - assets/kek_lapis.jpg
       - assets/sushi_rolls.jpg
+      - assets/default.png
       
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

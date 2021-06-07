@@ -56,11 +56,16 @@ class AuthService {
           email: email, password: password);
       User user = result.user;
 
+      // await DatabaseService(uid: user.uid).updateFoodData(
+      //     'Kek Lapis',
+      //     'Muaz Restaurant',
+      //     'enak dimakan begitu saja',
+      //     'assets/kek_lapis.jpg',
+      //     8.0);
+
       // create a new document for the user with the uid
       await DatabaseService(uid: user.uid)
           .updateUserData(user.email, name, phoneNo, address);
-      await DatabaseService(uid: user.uid).updateFoodData(
-          'Kek Lapis', 'Muaz', 'Enak dimakan begitu saja', 'test', 20.0);
       return _fromFirebaseuser(user);
     } catch (e) {
       print(e.toString());

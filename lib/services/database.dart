@@ -65,6 +65,6 @@ class DatabaseService {
 
   // get user doc stream
   Stream<UserData> get userData {
-    return foodCollection.doc(uid).snapshots().map(_userDataFromSnapshot);
+    return userCollection.doc(uid).snapshots().map(_userDataFromSnapshot);
   }
 }

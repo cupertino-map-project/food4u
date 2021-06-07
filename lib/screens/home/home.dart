@@ -2,28 +2,34 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/material.dart';
 import 'package:food4u/models/food.dart';
-import 'package:food4u/screens/home/settings_form.dart';
+import 'package:food4u/screens/profile/profile.dart';
 import 'package:food4u/services/auth.dart';
 import 'package:food4u/services/database.dart';
 import 'package:provider/provider.dart';
 import 'food_list.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   final AuthService _auth = AuthService();
+  int _selectedIndex = 0;
+
+  List<Widget> _bottomBarOption = <Widget>[
+    Container(child: FoodList()),
+    Container(
+      child: Profile(),
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() => _selectedIndex = index);
+  }
 
   @override
   Widget build(BuildContext context) {
-    // void _showSettingsPanel() {
-    //   showModalBottomSheet(
-    //       context: context,
-    //       builder: (context) {
-    //         return Container(
-    //           padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
-    //           child: SettingsForm(),
-    //         );
-    //       });
-    // }
-
     return StreamProvider<List<Food>>.value(
         value: DatabaseService().foods,
         initialData: null,
@@ -33,29 +39,14 @@ class Home extends StatelessWidget {
             title: Text('Find food near you',
                 style: TextStyle(color: Colors.blue[800])),
             backgroundColor: Colors.white,
-            elevation: 0.0,
+            elevation: 10.0,
             actions: <Widget>[
-              ElevatedButton.icon(
-                onPressed: () async {
-                  await _auth.signOut();
-                },
-                icon: Icon(Icons.person),
-                label: Text('Logout'),
-              ),
-              // ElevatedButton.icon(
-              //   onPressed: () => _showSettingsPanel(),
-              //   icon: Icon(Icons.settings),
-              //   label: Text('settings'),
-              // )
+              Image.asset('assets/Food4U.png'),
             ],
           ),
           body: Container(
-              // decoration: BoxDecoration(
-              //     image: DecorationImage(
-              //   image: AssetImage('assets/coffee_bg.png'),
-              //   fit: BoxFit.cover,
-              // )),
-              child: FoodList()),
+            child: _bottomBarOption.elementAt(_selectedIndex),
+          ),
           bottomNavigationBar: BottomNavigationBar(
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
@@ -67,7 +58,9 @@ class Home extends StatelessWidget {
                 label: 'Profile',
               ),
             ],
+            currentIndex: _selectedIndex,
             selectedItemColor: Colors.amber[800],
+            onTap: _onItemTapped,
           ),
         ));
   }
