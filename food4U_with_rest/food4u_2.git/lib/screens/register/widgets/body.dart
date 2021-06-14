@@ -10,7 +10,11 @@ class RegisterBody extends StatelessWidget {
   void _onRegister(BuildContext context, RegisterViewModel viewmodel) async {
     final User _user = await viewmodel.register();
 
-    if (_user != null) Navigator.pushNamed(context, '/main');
+    if (_user != null) Navigator.pop(context, _user);
+  }
+
+  void _onCancel(BuildContext context, RegisterViewModel viewmodel) {
+    Navigator.pop(context, null);
   }
 
   @override
@@ -68,14 +72,7 @@ class RegisterBody extends StatelessWidget {
                           value.isEmpty ? 'Enter Address' : null,
                       onChanged: (value) => viewmodel.address = value),
                   SizedBox(height: 10.0),
-
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(primary: Colors.black),
-                      child: Text(
-                        'Register',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      onPressed: () => _onRegister(context, viewmodel)),
+                  _buildButtons(context, viewmodel),
                   SizedBox(height: 12.0),
                   Text('Invalid information',
                       style: TextStyle(color: Colors.red, fontSize: 14.0)),
@@ -83,6 +80,23 @@ class RegisterBody extends StatelessWidget {
               ),
             ),
           )),
+    );
+  }
+
+  Row _buildButtons(BuildContext context, RegisterViewModel viewmodel) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        ElevatedButton(
+          child: Text('Register'),
+          onPressed: () => _onRegister(context, viewmodel),
+        ),
+        SizedBox(width: 10.0),
+        ElevatedButton(
+          child: Text('Cancel'),
+          onPressed: () => _onCancel(context, viewmodel),
+        ),
+      ],
     );
   }
 }

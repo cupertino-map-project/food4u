@@ -1,4 +1,6 @@
+import 'package:exercise3/models/user.dart';
 import 'package:exercise3/screens/main/counter_viewmodel.dart';
+import 'package:exercise3/screens/main/widgets/bar/unsigned_body.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/bar/signed_in_bar.dart';
@@ -30,7 +32,9 @@ class MainScreen extends StatelessWidget {
               );
             }
 
-            return Scaffold(appBar: UnsignedInBar(mainViewmodel));
+            return Scaffold(
+                appBar: UnsignedInBar(mainViewmodel),
+                body: UnsignedInBody(mainViewmodel));
           },
         ),
       ),

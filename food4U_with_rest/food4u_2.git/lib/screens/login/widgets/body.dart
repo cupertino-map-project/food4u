@@ -1,3 +1,4 @@
+import 'package:exercise3/shared/constants.dart';
 import 'package:flutter/material.dart';
 
 import '../../../models/user.dart';
@@ -30,26 +31,25 @@ class Body extends StatelessWidget {
                 scale: 1.5,
               ),
               SizedBox(height: 20.0),
-              _buildTextField(
-                  hint: 'Username',
-                  icon: Icons.people,
+              TextFormField(
+                  decoration: inputDecoration.copyWith(hintText: 'Username'),
+                  validator: (value) =>
+                      value.isEmpty ? 'Enter a username' : null,
                   onChanged: (value) => viewmodel.username = value),
-              _buildTextField(
-                  hint: 'Password',
-                  isObsecure: !viewmodel.showPassword,
-                  icon: Icons.lock,
-                  button: IconButton(
-                      icon: Icon(Icons.visibility),
-                      onPressed: () =>
-                          viewmodel.showPassword = !viewmodel.showPassword),
+              SizedBox(height: 20.0),
+              TextFormField(
+                  decoration: inputDecoration.copyWith(hintText: 'Password'),
+                  validator: (value) => value.length < 6
+                      ? 'Password must be 6 characters long'
+                      : null,
+                  obscureText: true,
                   onChanged: (value) => viewmodel.password = value),
+              SizedBox(height: 20.0),
+              _buildButtons(context, viewmodel),
+              SizedBox(height: 12.0),
               if (viewmodel.showErrorMessage)
-                Text(
-                  'Invalid username or password!',
-                  style: TextStyle(color: Colors.red, fontSize: 20.0),
-                ),
-              SizedBox(height: 10.0),
-              _buildButtons(context, viewmodel)
+                Text('Invalid Username or pssword!',
+                    style: TextStyle(color: Colors.red, fontSize: 14.0)),
             ],
           ),
         ),

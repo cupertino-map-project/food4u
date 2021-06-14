@@ -1,3 +1,4 @@
+import 'package:exercise3/models/user.dart';
 import 'package:exercise3/screens/register/register_screen.dart';
 import 'package:flutter/material.dart';
 

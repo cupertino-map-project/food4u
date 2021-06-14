@@ -5,16 +5,20 @@ import './bar.dart';
 
 class UnsignedInBar extends Bar {
   final MainViewmodel _viewmodel;
-  const UnsignedInBar(viewmodel) : _viewmodel = viewmodel;
+  const UnsignedInBar(MainViewmodel viewmodel) : _viewmodel = viewmodel;
 
   @override
   Widget build(BuildContext context) {
     return Bar(
-        title: 'Please log in',
-        image: AssetImage('assets/images/unknown_user.png'),
-        button: IconButton(
-            icon: Icon(Icons.login),
-            onPressed: () => _onPressLoginButton(context)));
+      title: 'Please log in',
+      image: AssetImage('assets/images/unknown_user.png'),
+      button: IconButton(
+          icon: Icon(
+            Icons.logout,
+            color: Colors.red,
+          ),
+          onPressed: () => _onPressLoginButton(context)),
+    );
   }
 
   void _onPressLoginButton(context) async {

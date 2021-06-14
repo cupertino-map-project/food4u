@@ -1,3 +1,6 @@
+import 'package:exercise3/screens/login/login_viewmodel.dart';
+import 'package:exercise3/screens/main/main_viewmodel.dart';
+import 'package:exercise3/screens/register/register_viewmodel.dart';
 import 'package:get_it/get_it.dart';
 
 // import '../services/auth/auth_service_mock.dart';
@@ -32,5 +35,8 @@ void init() {
   // dependency.registerLazySingleton<AuthService>(() => AuthServiceMock());
 
   // Viewmodels
+  dependency.registerLazySingleton(() => LoginViewmodel());
+  dependency.registerLazySingleton(() => RegisterViewModel());
+  dependency.registerLazySingleton(() => MainViewmodel());
   dependency.registerLazySingleton(() => UserViewmodel());
 }

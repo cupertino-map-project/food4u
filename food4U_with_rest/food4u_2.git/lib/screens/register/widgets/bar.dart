@@ -10,19 +10,9 @@ class Bar extends StatelessWidget implements PreferredSizeWidget {
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Food4U'),
+          Text('Register to Food4U'),
         ],
       ),
-      actions: <Widget>[
-        ElevatedButton.icon(
-          style: ButtonStyle(
-              backgroundColor:
-                  MaterialStateProperty.all<Color>(Colors.blue[800])),
-          onPressed: () => Navigator.pushNamed(context, '/login'),
-          icon: Icon(Icons.person),
-          label: Text('Login'),
-        )
-      ],
     );
   }
 }
