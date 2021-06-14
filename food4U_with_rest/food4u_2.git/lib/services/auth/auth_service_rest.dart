@@ -13,4 +13,9 @@ class AuthServiceRest implements AuthService {
     final _user = User.fromJson(json[0]);
     return _user;
   }
+
+  Future<User> register({User user}) async {
+    final userRegister = await rest.post('users', data: user);
+    return User.fromJson(userRegister);
+  }
 }

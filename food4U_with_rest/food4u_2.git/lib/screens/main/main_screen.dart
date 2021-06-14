@@ -26,7 +26,7 @@ class MainScreen extends StatelessWidget {
               return Scaffold(
                 appBar: SignedInBar(mainViewmodel),
                 body: Body(_counterViewmodel),
-                floatingActionButton: Float(_counterViewmodel),
+                //floatingActionButton: Float(_counterViewmodel),
               );
             }
 

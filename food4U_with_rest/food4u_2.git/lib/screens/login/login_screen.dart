@@ -1,3 +1,4 @@
+import 'package:exercise3/screens/login/widgets/bar.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/body.dart';
@@ -12,6 +13,7 @@ class LoginScreen extends StatelessWidget {
       child: SafeArea(
         child: Scaffold(
           body: Body(),
+          appBar: Bar(),
         ),
       ),
     );

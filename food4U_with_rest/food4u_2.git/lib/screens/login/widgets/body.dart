@@ -20,33 +20,71 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return View(
       viewmodel: LoginViewmodel(),
-      builder: (context, viewmodel, _) => Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          _buildTextField(
-              hint: 'Username',
-              icon: Icons.people,
-              onChanged: (value) => viewmodel.username = value),
-          _buildTextField(
-              hint: 'Password',
-              isObsecure: !viewmodel.showPassword,
-              icon: Icons.lock,
-              button: IconButton(
-                  icon: Icon(Icons.visibility),
-                  onPressed: () =>
-                      viewmodel.showPassword = !viewmodel.showPassword),
-              onChanged: (value) => viewmodel.password = value),
-          if (viewmodel.showErrorMessage)
-            Text(
-              'Invalid username or password!',
-              style: TextStyle(color: Colors.red, fontSize: 20.0),
-            ),
-          SizedBox(height: 10.0),
-          _buildButtons(context, viewmodel)
-        ],
+      builder: (context, viewmodel, _) => Container(
+        padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Image.asset(
+                'assets/images/Food4U.png',
+                scale: 1.5,
+              ),
+              SizedBox(height: 20.0),
+              _buildTextField(
+                  hint: 'Username',
+                  icon: Icons.people,
+                  onChanged: (value) => viewmodel.username = value),
+              _buildTextField(
+                  hint: 'Password',
+                  isObsecure: !viewmodel.showPassword,
+                  icon: Icons.lock,
+                  button: IconButton(
+                      icon: Icon(Icons.visibility),
+                      onPressed: () =>
+                          viewmodel.showPassword = !viewmodel.showPassword),
+                  onChanged: (value) => viewmodel.password = value),
+              if (viewmodel.showErrorMessage)
+                Text(
+                  'Invalid username or password!',
+                  style: TextStyle(color: Colors.red, fontSize: 20.0),
+                ),
+              SizedBox(height: 10.0),
+              _buildButtons(context, viewmodel)
+            ],
+          ),
+        ),
       ),
     );
+
+    // return View(
+    //   viewmodel: LoginViewmodel(),
+    //   builder: (context, viewmodel, _) => Column(
+    //     mainAxisSize: MainAxisSize.max,
+    //     mainAxisAlignment: MainAxisAlignment.center,
+    //     children: [
+    //       _buildTextField(
+    //           hint: 'Username',
+    //           icon: Icons.people,
+    //           onChanged: (value) => viewmodel.username = value),
+    //       _buildTextField(
+    //           hint: 'Password',
+    //           isObsecure: !viewmodel.showPassword,
+    //           icon: Icons.lock,
+    //           button: IconButton(
+    //               icon: Icon(Icons.visibility),
+    //               onPressed: () =>
+    //                   viewmodel.showPassword = !viewmodel.showPassword),
+    //           onChanged: (value) => viewmodel.password = value),
+    //       if (viewmodel.showErrorMessage)
+    //         Text(
+    //           'Invalid username or password!',
+    //           style: TextStyle(color: Colors.red, fontSize: 20.0),
+    //         ),
+    //       SizedBox(height: 10.0),
+    //       _buildButtons(context, viewmodel)
+    //     ],
+    //   ),
+    // );
   }
 
   TextField _buildTextField(
