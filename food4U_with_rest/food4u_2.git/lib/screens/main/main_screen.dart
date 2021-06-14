@@ -1,5 +1,6 @@
 import 'package:exercise3/models/user.dart';
 import 'package:exercise3/screens/main/counter_viewmodel.dart';
+import 'package:exercise3/screens/main/food_viewmodel.dart';
 import 'package:exercise3/screens/main/widgets/bar/unsigned_body.dart';
 import 'package:flutter/material.dart';
 
@@ -22,12 +23,12 @@ class MainScreen extends StatelessWidget {
           viewmodel: MainViewmodel(),
           builder: (_, mainViewmodel, __) {
             if (mainViewmodel.isUserSignedIn) {
-              final _counterViewmodel =
-                  CounterViewmodel(mainViewmodel: mainViewmodel);
+              final _foodViewModel =
+                  FoodViewModel(mainViewmodel: mainViewmodel);
 
               return Scaffold(
                 appBar: SignedInBar(mainViewmodel),
-                body: Body(_counterViewmodel),
+                body: Body(_foodViewModel),
                 //floatingActionButton: Float(_counterViewmodel),
               );
             }

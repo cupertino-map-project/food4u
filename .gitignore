@@ -30,6 +30,7 @@
 .pub-cache/
 .pub/
 /build/
+food4U_with_rest/food4u_2.git/build/
 
 # Web related
 lib/generated_plugin_registrant.dart

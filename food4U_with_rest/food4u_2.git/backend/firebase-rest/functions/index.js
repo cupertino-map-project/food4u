@@ -10,10 +10,13 @@ const express = require("express")
 const app = express();
 const usersRouter = require('./api/controllers/users_controller')
 const countersRouter = require('./api/controllers/counters_controller')
+const foodsRouter = require('./api/controllers/foods_controller')
 
 app.use(express.json())
 app.use('/users', usersRouter)
 app.use('/counters', countersRouter)
+app.use('/foods' , foodsRouter)
+
 
 
 // To handle "Function Timeout" exception

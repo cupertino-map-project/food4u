@@ -13,34 +13,57 @@
 // the document name will be auto-generated
 
 const _collectionsJson = {
-  users: [
+  foods:[
     {
-      id: "user1",
-      name: "Alexander Holmes",
-      photoUrl: "https://randomuser.me/api/portraits/thumb/men/75.jpg",
-      login: "alex",
-      password: "123"
-    },
-    {
-      id: "user2",
-      name: "Jessica Walters",
-      photoUrl: "https://randomuser.me/api/portraits/thumb/women/75.jpg",
-      login: "jessica",
-      password: "123"
-    }
+      name:"Kek Lapis",
+      desctiption: "enak dimakan begitu sahaja",
+      ownerName: "Afiq Restaurant",
+      photoUrl: "assets/images/kek_lapis.jpg",
+      price : "8.0"
+   },
+   {
+      name:"Chiyu Topokki",
+      desctiption: "Topokki seperti korea",
+      ownerName: "Afiq Restaurant",
+      photoUrl: "assets/images/topokki.jpg",
+      price : "4.0"
+   },
+   {
+      name:"Sushi rolls",
+      desctiption: "Rasai sushi roll jepun sebenar",
+      ownerName: "Bob Restaurant",
+      photoUrl: "assets/images/sushi_rolls.jpg",
+      price : "2.0"
+   }
   ],
-  counters: [
-    {
-      id: "counter1",
-      counter: 0,
-      user: "user1"
-    },
-    {
-      id: "counter2",
-      counter: 0,
-      user: "user2"
-    }
-  ]
+  // users: [
+  //   {
+  //     id: "user1",
+  //     name: "Alexander Holmes",
+  //     photoUrl: "https://randomuser.me/api/portraits/thumb/men/75.jpg",
+  //     login: "alex",
+  //     password: "123"
+  //   },
+  //   {
+  //     id: "user2",
+  //     name: "Jessica Walters",
+  //     photoUrl: "https://randomuser.me/api/portraits/thumb/women/75.jpg",
+  //     login: "jessica",
+  //     password: "123"
+  //   }
+  // ],
+  // counters: [
+  //   {
+  //     id: "counter1",
+  //     counter: 0,
+  //     user: "user1"
+  //   },
+  //   {
+  //     id: "counter2",
+  //     counter: 0,
+  //     user: "user2"
+  //   }
+  // ]
 }
 
 

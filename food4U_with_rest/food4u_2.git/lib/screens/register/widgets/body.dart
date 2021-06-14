@@ -9,7 +9,7 @@ class RegisterBody extends StatelessWidget {
 
   void _onRegister(BuildContext context, RegisterViewModel viewmodel) async {
     final User _user = await viewmodel.register();
-
+    print(_user.id);
     if (_user != null) Navigator.pop(context, _user);
   }
 

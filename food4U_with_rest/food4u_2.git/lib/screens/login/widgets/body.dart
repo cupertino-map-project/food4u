@@ -8,7 +8,6 @@ import '../login_viewmodel.dart';
 class Body extends StatelessWidget {
   void _onLogin(BuildContext context, LoginViewmodel viewmodel) async {
     final User _user = await viewmodel.authenticate();
-
     if (_user != null) Navigator.pop(context, _user);
   }
 
