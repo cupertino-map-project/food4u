@@ -1,8 +1,11 @@
 import 'package:exercise3/screens/login/login_viewmodel.dart';
 import 'package:exercise3/screens/main/main_viewmodel.dart';
+import 'package:exercise3/screens/main/profile/profile_viewmodel.dart';
 import 'package:exercise3/screens/register/register_viewmodel.dart';
 import 'package:exercise3/services/food/food_service.dart';
 import 'package:exercise3/services/food/food_service_rest.dart';
+import 'package:exercise3/services/user/user_service.dart';
+import 'package:exercise3/services/user/user_service_rest.dart';
 import 'package:get_it/get_it.dart';
 
 // import '../services/auth/auth_service_mock.dart';
@@ -34,6 +37,7 @@ void init() {
   dependency.registerLazySingleton<CounterService>(() => CounterServiceRest());
   dependency.registerLazySingleton<AuthService>(() => AuthServiceRest());
   dependency.registerLazySingleton<FoodService>(() => FoodServiceRest());
+  dependency.registerLazySingleton<UserService>(() => UserServiceRest());
 
   // dependency.registerLazySingleton<CounterService>(() => CounterServiceMock());
   // dependency.registerLazySingleton<AuthService>(() => AuthServiceMock());
@@ -43,4 +47,5 @@ void init() {
   dependency.registerLazySingleton(() => RegisterViewModel());
   dependency.registerLazySingleton(() => MainViewmodel());
   dependency.registerLazySingleton(() => UserViewmodel());
+  dependency.registerLazySingleton(() => ProfileViewModel());
 }

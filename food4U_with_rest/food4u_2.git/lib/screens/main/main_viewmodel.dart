@@ -7,6 +7,7 @@ import '../viewmodel.dart';
 
 class MainViewmodel extends Viewmodel {
   UserViewmodel get _userViewmodel => dependency();
+
   User get user => _userViewmodel.user;
   set user(User value) => update(() async => _userViewmodel.user = value);
   void authenticate(User user) =>

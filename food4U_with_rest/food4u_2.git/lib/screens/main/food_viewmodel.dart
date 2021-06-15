@@ -11,7 +11,6 @@ import 'main_viewmodel.dart';
 class FoodViewModel extends Viewmodel {
   final MainViewmodel _mainViewmodel;
   FoodViewModel({mainViewmodel}) : _mainViewmodel = mainViewmodel {
-    print('it runs');
     _listFood();
   }
 
