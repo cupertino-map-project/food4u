@@ -1,5 +1,7 @@
+import 'package:exercise3/models/food.dart';
 import 'package:exercise3/models/user.dart';
 import 'package:exercise3/screens/register/register_screen.dart';
+import 'package:exercise3/screens/viewproduct/viewproduct.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/login/login_screen.dart';
@@ -16,6 +18,9 @@ Route<dynamic> createRoute(settings) {
 
     case '/register':
       return RegisterScreen.route();
+
+    case '/viewproduct':
+      return ViewProductScreen.route(data: settings.arguments as Food);
   }
   return null;
 }

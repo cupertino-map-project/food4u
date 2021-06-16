@@ -6,6 +6,10 @@ class FoodTile extends StatelessWidget {
 
   FoodTile({this.food});
 
+  void _todetail(BuildContext context, _id) {
+    Navigator.pushNamed(context, '/viewproduct', arguments: Food.copy(food));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,6 +32,7 @@ class FoodTile extends StatelessWidget {
           ),
           subtitle: Text('${food.ownerName}'),
           trailing: Text('RM${food.price}'),
+          onTap: () => _todetail(context, food),
         ),
       ),
     );

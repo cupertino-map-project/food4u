@@ -28,7 +28,8 @@ dependencies:
   http: ^0.13.3
   provider: ^4.3.1
   flutter_spinkit: "^4.1.2"
- 
+  flutter_svg: ^0.22.0
+  smooth_star_rating: ^1.0.4
 
 dev_dependencies:
   flutter_test:
@@ -52,6 +53,9 @@ flutter:
     - assets/images/topokki.jpg
     - assets/images/default.png
     - assets/images/bg.png
+    - assets/images/bag.svg
+    - assets/images/more.svg
+    - assets/images/share.svg
     
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
