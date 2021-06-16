@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import '../main_viewmodel.dart';
 
 class EditProfileForm extends StatefulWidget {
-  final ProfileViewModel _viewmodel;
-  EditProfileForm(ProfileViewModel viewmodel) : _viewmodel = viewmodel;
+  final MainViewmodel _viewmodel;
+  EditProfileForm(MainViewmodel viewmodel) : _viewmodel = viewmodel;
 
   @override
   _EditProfileFormState createState() => _EditProfileFormState();
@@ -78,10 +78,10 @@ class _EditProfileFormState extends State<EditProfileForm> {
               onPressed: () async {
                 if (_formKey.currentState.validate()) {
                   await widget._viewmodel.updateUser(
-                    widget._viewmodel.currentName ??
-                        widget._viewmodel.user.name,
                     widget._viewmodel.currentUsername ??
                         widget._viewmodel.user.login,
+                    widget._viewmodel.currentName ??
+                        widget._viewmodel.user.name,
                     widget._viewmodel.currentPhoneNo ??
                         widget._viewmodel.user.phoneNo,
                     widget._viewmodel.currentAddress ??

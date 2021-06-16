@@ -7,16 +7,16 @@ import 'edit_profile.dart';
 
 class Profile extends StatefulWidget {
   static const routeName = "/profile";
-  final ProfileViewModel _viewmodel;
-  Profile(ProfileViewModel viewmodel) : _viewmodel = viewmodel;
+  final MainViewmodel _viewmodel;
+  Profile(MainViewmodel viewmodel) : _viewmodel = viewmodel;
 
   @override
   _ProfileState createState() => _ProfileState(_viewmodel);
 }
 
 class _ProfileState extends State<Profile> {
-  final ProfileViewModel _viewmodel;
-  _ProfileState(ProfileViewModel viewmodel) : _viewmodel = viewmodel;
+  final MainViewmodel _viewmodel;
+  _ProfileState(MainViewmodel viewmodel) : _viewmodel = viewmodel;
 
   @override
   Widget build(BuildContext context) {
@@ -168,7 +168,7 @@ class _ProfileState extends State<Profile> {
 
   Widget logoutButton() {
     return InkWell(
-      onTap: () => _viewmodel.user == null,
+      onTap: () => _viewmodel.user = null,
       child: Container(
           color: Colors.orange,
           child: Padding(

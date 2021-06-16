@@ -7,26 +7,31 @@ import 'package:exercise3/services/user/user_service.dart';
 
 class ProfileViewModel extends Viewmodel {
   UserService get _service => dependency();
+  UserViewmodel get _userViewmodel => dependency();
 
   final MainViewmodel _mainViewmodel;
-  ProfileViewModel({mainViewmodel}) : _mainViewmodel = mainViewmodel;
+  ProfileViewModel({mainViewmodel}) : _mainViewmodel = mainViewmodel {
+    _loadUser();
+  }
+  User get user => _userViewmodel.user;
+  set user(User value) => update(() async => _userViewmodel.user = value);
 
 //form values;
 
-  User get user => _mainViewmodel.user;
-  set user(User value) => update(() async => _mainViewmodel.user = value);
+  get currentName => user.name;
+  set currentName(value) => user.name = value;
 
-  get currentName => _mainViewmodel.user.name;
-  set currentName(value) => _mainViewmodel.user.name = value;
+  get currentUsername => user.login;
+  set currentUsername(value) => user.login = value;
 
-  get currentUsername => _mainViewmodel.user.login;
-  set currentUsername(value) => _mainViewmodel.user.login = value;
+  get currentPhoneNo => user.phoneNo;
+  set currentPhoneNo(value) => user.phoneNo = value;
 
-  get currentPhoneNo => _mainViewmodel.user.phoneNo;
-  set currentPhoneNo(value) => _mainViewmodel.user.phoneNo = value;
+  get currentAddress => user.address;
+  set currentAddress(value) => user.address = value;
 
-  get currentAddress => _mainViewmodel.user.address;
-  set currentAddress(value) => _mainViewmodel.user.address = value;
+  void _loadUser() =>
+      update(() async => user = await _service.getUserByID(user.id));
 
   Future<User> updateUser(String currentUsername, String currentName,
       String currentPhoneNo, String currentAddress) async {
