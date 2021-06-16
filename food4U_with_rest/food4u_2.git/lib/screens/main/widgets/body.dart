@@ -1,5 +1,4 @@
 import 'package:exercise3/models/food.dart';
-import 'package:exercise3/screens/main/counter_viewmodel.dart';
 import 'package:exercise3/screens/main/food_viewmodel.dart';
 import 'package:exercise3/screens/main/widgets/food_tile.dart';
 import 'package:exercise3/screens/view.dart';

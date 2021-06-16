@@ -1,16 +1,11 @@
-import 'package:exercise3/models/user.dart';
-import 'package:exercise3/screens/main/counter_viewmodel.dart';
 import 'package:exercise3/screens/main/food_viewmodel.dart';
 import 'package:exercise3/screens/main/profile/profile_viewmodel.dart';
 import 'package:exercise3/screens/main/widgets/bar/unsigned_body.dart';
-import 'package:exercise3/screens/main/widgets/bottom.dart';
 import 'package:flutter/material.dart';
 
 import 'profile/profile.dart';
 import 'widgets/bar/signed_in_bar.dart';
-import 'widgets/bar/unsigned_in_bar.dart';
 import 'widgets/body.dart';
-import 'widgets/float.dart';
 import '../view.dart';
 import 'main_viewmodel.dart';
 
@@ -73,9 +68,7 @@ class _MainScreenState extends State<MainScreen> {
               );
             }
 
-            return Scaffold(
-                appBar: UnsignedInBar(mainViewmodel),
-                body: UnsignedInBody(mainViewmodel));
+            return Scaffold(body: UnsignedInBody(mainViewmodel));
           },
         ),
       ),
