@@ -1,3 +1,4 @@
+import 'package:exercise3/models/food.dart';
 import 'package:exercise3/screens/main/food_viewmodel.dart';
 import 'package:flutter/material.dart';
 
@@ -53,7 +54,32 @@ class _BarState extends State<Bar> {
                     this.widget._foodViewModel.isSearching = true;
                   });
                 },
-              )
+              ),
+        Stack(
+          children: [
+            IconButton(
+              icon: Icon(Icons.shopping_cart),
+              onPressed: () {},
+              alignment: Alignment.bottomCenter,
+            ),
+            Positioned(
+              child: Stack(
+                children: [
+                  Icon(
+                    Icons.brightness_1,
+                    size: 20.0,
+                    color: Colors.green,
+                  ),
+                  // Positioned(
+                  //   top:3.0,
+                  //   bottom:4.0,
+                  //   child: Food<CartItemCounter>
+                  // ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ],
     );
   }
