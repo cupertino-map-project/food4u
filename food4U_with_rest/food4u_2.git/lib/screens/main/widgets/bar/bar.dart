@@ -1,33 +1,59 @@
+import 'package:exercise3/screens/main/food_viewmodel.dart';
 import 'package:flutter/material.dart';
 
-class Bar extends StatelessWidget implements PreferredSizeWidget {
+class Bar extends StatefulWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => Size.fromHeight(60.0);
-  final ImageProvider _image;
-  final String _title;
-  final IconButton _button;
+  _BarState createState() => _BarState();
+  final FoodViewModel _foodViewModel;
+  Bar(FoodViewModel foodViewModel) : _foodViewModel = foodViewModel;
+}
 
-  const Bar({image, title, button})
-      : _image = image,
-        _title = title,
-        _button = button;
+class _BarState extends State<Bar> {
+  @override
+  void _filterFoodList(value) {
+    setState(() {
+      widget._foodViewModel.filteredFoodList = widget._foodViewModel.foodList
+          .where((food) =>
+              food['Name'].toLowerCase().contains(value.toLowerCase()))
+          .toList();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text('Find Food Near You'),
-          Text(
-            _title,
-            style: TextStyle(fontSize: 12.0),
-          ),
-        ],
-      ),
+      title: !widget._foodViewModel.isSearching
+          ? Text('Find Food Near You')
+          : TextField(
+              onChanged: (value) {
+                _filterFoodList(value);
+              },
+              decoration: InputDecoration(
+                  icon: Icon(Icons.search),
+                  hintText: "Search Food Here",
+                  hintStyle: TextStyle(color: Colors.black)),
+            ),
       actions: <Widget>[
-        Container(child: Image.asset('assets/images/Food4U.png')),
-        _button
+        widget._foodViewModel.isSearching
+            ? IconButton(
+                icon: Icon(Icons.cancel),
+                onPressed: () {
+                  setState(() {
+                    this.widget._foodViewModel.isSearching = false;
+                    widget._foodViewModel.filteredFoodList =
+                        widget._foodViewModel.foodList;
+                  });
+                },
+              )
+            : IconButton(
+                icon: Icon(Icons.search),
+                onPressed: () {
+                  setState(() {
+                    this.widget._foodViewModel.isSearching = true;
+                  });
+                },
+              )
       ],
     );
   }

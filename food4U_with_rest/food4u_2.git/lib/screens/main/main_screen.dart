@@ -4,7 +4,8 @@ import 'package:exercise3/screens/main/widgets/bar/unsigned_body.dart';
 import 'package:flutter/material.dart';
 
 import 'profile/profile.dart';
-import 'widgets/bar/signed_in_bar.dart';
+import 'widgets/bar/bar.dart';
+
 import 'widgets/body.dart';
 import '../view.dart';
 import 'main_viewmodel.dart';
@@ -43,7 +44,7 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ];
               return Scaffold(
-                appBar: SignedInBar(mainViewmodel),
+                appBar: Bar(_foodViewModel),
                 body: Container(
                   child: _bottomBarOption.elementAt(_selectedIndex),
                 ),

@@ -14,11 +14,19 @@ class FoodViewModel extends Viewmodel {
     _listFood();
   }
 
+  bool _isSearching = false;
+  get isSearching => _isSearching;
+  set isSearching(value) => _isSearching = value;
+
   FoodService get service => dependency();
 
   List<Food> _foodList;
   get foodList => _foodList;
   set foodList(value) => _foodList = value;
+
+  List<Food> _filteredFoodList;
+  get filteredFoodList => _filteredFoodList;
+  set filteredFoodList(value) => _filteredFoodList = value;
 
   Future<List<Food>> _futureFoodList;
   get futureFoodList => _futureFoodList;
