@@ -15,7 +15,7 @@ class Body extends StatelessWidget {
     return Column(
       children: <Widget>[
         ItemImage(
-          imgSrc: "assets/images/sushi_rolls.jpg",
+          imgSrc: _data.photoUrl,
         ),
         Expanded(
           child: ItemInfo(data: _data),
@@ -44,12 +44,12 @@ class ItemInfo extends StatelessWidget {
       ),
       child: Column(
         children: <Widget>[
-          shopeName(name: "MacDonalds"),
+          shopeName(name: data.ownerName),
           TitlePriceRating(
             name: "${data.name}",
             numOfReviews: 24,
             rating: 4,
-            price: 15,
+            price: data.price,
             onRatingChanged: (value) {},
           ),
           Text(

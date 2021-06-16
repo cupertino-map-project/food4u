@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class TitlePriceRating extends StatelessWidget {
-  final int price, numOfReviews;
+  final double price;
+  final int numOfReviews;
   final double rating;
   final String name;
   final RatingChangeCallback onRatingChanged;
@@ -51,7 +52,7 @@ class TitlePriceRating extends StatelessWidget {
     );
   }
 
-  ClipPath priceTag(BuildContext context, {int price}) {
+  ClipPath priceTag(BuildContext context, {double price}) {
     return ClipPath(
       clipper: PricerCliper(),
       child: Container(
@@ -61,7 +62,7 @@ class TitlePriceRating extends StatelessWidget {
         width: 65,
         color: kPrimaryColor,
         child: Text(
-          "\$$price",
+          "\RM$price",
           style: Theme.of(context)
               .textTheme
               .title

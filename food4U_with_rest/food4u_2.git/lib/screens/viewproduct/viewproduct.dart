@@ -3,6 +3,7 @@ import 'package:exercise3/screens/main/main_screen.dart';
 import 'package:exercise3/screens/viewproduct/component/appbar.dart';
 import 'package:exercise3/screens/viewproduct/component/body.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ViewProductScreen extends StatelessWidget {
   static Route route({data}) =>
@@ -17,7 +18,26 @@ class ViewProductScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.yellow,
-      appBar: detailsAppBar(),
+      appBar: AppBar(
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+          onPressed: () => Navigator.pop(context, null),
+        ),
+        actions: <Widget>[
+          IconButton(
+            icon: SvgPicture.asset("assets/images/share.svg"),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: SvgPicture.asset("assets/images/more.svg"),
+            onPressed: () {},
+          ),
+        ],
+      ),
       body: Body(data: this.data),
     );
   }
