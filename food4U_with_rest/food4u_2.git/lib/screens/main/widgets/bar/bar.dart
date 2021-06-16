@@ -15,18 +15,20 @@ class Bar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: CircleAvatar(backgroundImage: _image),
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Food4u'),
+          Text('Find Food Near You'),
           Text(
             _title,
             style: TextStyle(fontSize: 12.0),
           ),
         ],
       ),
-      actions: [_button],
+      actions: <Widget>[
+        Container(child: Image.asset('assets/images/Food4U.png')),
+        _button
+      ],
     );
   }
 }

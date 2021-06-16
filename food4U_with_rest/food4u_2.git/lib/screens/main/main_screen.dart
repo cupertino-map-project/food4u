@@ -36,14 +36,12 @@ class _MainScreenState extends State<MainScreen> {
                   FoodViewModel(mainViewmodel: mainViewmodel);
               final _profileViewModel =
                   ProfileViewModel(mainViewmodel: mainViewmodel);
-
               List<Widget> _bottomBarOption = <Widget>[
                 Container(child: Body(_foodViewModel)),
                 Container(
                   child: Profile(_profileViewModel),
                 ),
               ];
-
               return Scaffold(
                 appBar: SignedInBar(mainViewmodel),
                 body: Container(
