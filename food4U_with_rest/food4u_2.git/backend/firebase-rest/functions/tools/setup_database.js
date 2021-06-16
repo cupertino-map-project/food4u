@@ -16,21 +16,21 @@ const _collectionsJson = {
   foods:[
     {
       name:"Kek Lapis",
-      desctiption: "enak dimakan begitu sahaja",
+      description: "enak dimakan begitu sahaja",
       ownerName: "Afiq Restaurant",
       photoUrl: "assets/images/kek_lapis.jpg",
       price : "8.0"
    },
    {
       name:"Chiyu Topokki",
-      desctiption: "Topokki seperti korea",
+      description: "Topokki seperti korea",
       ownerName: "Afiq Restaurant",
       photoUrl: "assets/images/topokki.jpg",
       price : "4.0"
    },
    {
       name:"Sushi rolls",
-      desctiption: "Rasai sushi roll jepun sebenar",
+      description: "Rasai sushi roll jepun sebenar",
       ownerName: "Bob Restaurant",
       photoUrl: "assets/images/sushi_rolls.jpg",
       price : "2.0"

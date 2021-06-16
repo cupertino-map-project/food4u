@@ -18,7 +18,7 @@ class ViewProductScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.yellow,
       appBar: detailsAppBar(),
-      body: Body(),
+      body: Body(data: this.data),
     );
   }
 }

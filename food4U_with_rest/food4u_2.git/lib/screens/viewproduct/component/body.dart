@@ -1,10 +1,15 @@
+import 'package:exercise3/models/food.dart';
 import 'package:exercise3/screens/viewproduct/component/constants.dart';
 import 'package:exercise3/screens/viewproduct/component/item_image.dart';
 import 'package:exercise3/screens/viewproduct/component/order_button.dart';
 import 'package:exercise3/screens/viewproduct/component/title_price_rating.dart';
+import 'package:exercise3/screens/viewproduct/viewproduct.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {
+  const Body({data}) : _data = data;
+
+  final Food _data;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -13,7 +18,7 @@ class Body extends StatelessWidget {
           imgSrc: "assets/images/sushi_rolls.jpg",
         ),
         Expanded(
-          child: ItemInfo(),
+          child: ItemInfo(data: _data),
         ),
       ],
     );
@@ -21,10 +26,9 @@ class Body extends StatelessWidget {
 }
 
 class ItemInfo extends StatelessWidget {
-  const ItemInfo({
-    Key key,
-  }) : super(key: key);
+  const ItemInfo({Key key, this.data}) : super(key: key);
 
+  final Food data;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -42,14 +46,14 @@ class ItemInfo extends StatelessWidget {
         children: <Widget>[
           shopeName(name: "MacDonalds"),
           TitlePriceRating(
-            name: "Cheese Burger",
+            name: "${data.name}",
             numOfReviews: 24,
             rating: 4,
             price: 15,
             onRatingChanged: (value) {},
           ),
           Text(
-            "Nowadays, making printed materials have become fast, easy and simple. If you want your promotional material to be an eye-catching object, you should make it colored. By way of using inkjet printer this is not hard to make. An inkjet printer is any printer that places extremely small droplets of ink onto paper to create an image.",
+            "${data.description}",
             style: TextStyle(
               height: 1.5,
             ),
