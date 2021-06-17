@@ -1,6 +1,8 @@
 import 'package:exercise3/models/food.dart';
+import 'package:exercise3/models/cart.dart';
 import 'package:exercise3/screens/main/food_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Bar extends StatefulWidget implements PreferredSizeWidget {
   @override
@@ -59,7 +61,9 @@ class _BarState extends State<Bar> {
           children: [
             IconButton(
               icon: Icon(Icons.shopping_cart),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/viewcart');
+              },
               alignment: Alignment.bottomCenter,
             ),
             Positioned(
@@ -71,10 +75,11 @@ class _BarState extends State<Bar> {
                     color: Colors.green,
                   ),
                   // Positioned(
-                  //   top:3.0,
-                  //   bottom:4.0,
-                  //   child: Food<CartItemCounter>
-                  // ),
+                  //     top: 3.0,
+                  //     bottom: 4.0,
+                  //     child: Consumer<CartItemCounter>(
+                  //       builder: (context, counter, _) {},
+                  //     )),
                 ],
               ),
             ),
