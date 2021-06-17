@@ -92,7 +92,7 @@ class CheckOutCart extends StatelessWidget {
                     icon: Icon(
                       Icons.directions_car_outlined,
                       size: 20.0,
-                      color: Colors.white,
+                      color: Colors.orange,
                     ),
                     onPressed: () {},
                     label: const Text('Check out')
