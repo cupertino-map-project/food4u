@@ -1,5 +1,6 @@
 import 'package:exercise3/models/food.dart';
 import 'package:exercise3/models/user.dart';
+import 'package:exercise3/screens/buy/viewbuy.dart';
 import 'package:exercise3/screens/register/register_screen.dart';
 import 'package:exercise3/screens/viewproduct/viewproduct.dart';
 import 'package:exercise3/screens/cart/viewcart.dart';
@@ -25,6 +26,9 @@ Route<dynamic> createRoute(settings) {
 
     case '/viewcart':
       return ViewCartScreen.route();
+
+    case '/buy':
+      return PaymentDetails.route();
   }
   return null;
 }

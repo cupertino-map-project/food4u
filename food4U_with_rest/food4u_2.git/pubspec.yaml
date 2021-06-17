@@ -56,6 +56,7 @@ flutter:
     - assets/images/bag.svg
     - assets/images/more.svg
     - assets/images/share.svg
+    - assets/images/success.gif
     
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see

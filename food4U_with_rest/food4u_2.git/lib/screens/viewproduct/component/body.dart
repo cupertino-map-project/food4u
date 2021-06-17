@@ -62,7 +62,9 @@ class ItemInfo extends StatelessWidget {
           // Free space  10% of total height
           OrderButton(
             size: size,
-            press: () {},
+            press: () {
+              Navigator.pushNamed(context, '/buy');
+            },
           )
         ],
       ),
