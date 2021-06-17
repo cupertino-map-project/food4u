@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:exercise3/models/cart.dart';
 
 class CartItemCard extends StatelessWidget {
-  const CartItemCard({
-    Key key,
-    @required this.cart,
-  }) : super(key: key);
+  // const CartItemCard({
+  //   Key key,
+  //   @required this.cart,
+  // }) : super(key: key);
 
-  final Cart cart;
+  // final Cart cart;
 
   @override
   Widget build(BuildContext context) {

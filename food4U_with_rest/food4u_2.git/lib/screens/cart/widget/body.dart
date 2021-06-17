@@ -12,13 +12,13 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-        // children: [
-        //   Dismissible(
+      children: [
+        // Dismissible(
 
-        //     child: CartItemCard(cart: numOfItem)
+        CartItemCard(),
 
-        //     ),
-        // ],
-        );
+        // ),
+      ],
+    );
   }
 }
