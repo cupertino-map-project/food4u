@@ -13,4 +13,9 @@ class FoodServiceRest implements FoodService {
     if (listJson == null || listJson.length == 0) return null;
     return listJson.map((json) => Food.fromJson(json)).toList();
   }
+
+  Future<Food> addFood({Food food}) async {
+    final newFood = await rest.post('foods', data: food);
+    return Food.fromJson(newFood);
+  }
 }

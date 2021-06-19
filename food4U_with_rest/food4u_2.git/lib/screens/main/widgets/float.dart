@@ -11,7 +11,7 @@ class Float extends StatelessWidget {
         icon: Icon(Icons.add_circle_sharp),
         label: const Text('Add Product'),
         backgroundColor: Colors.blue[600],
-        onPressed: () {},
+        onPressed: () => Navigator.pushNamed(context, '/addProduct'),
       );
     } else {
       return Container();
