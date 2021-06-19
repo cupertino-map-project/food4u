@@ -8,7 +8,7 @@ void main() {
 
   runApp(
     MaterialApp(
-      title: 'MVVM Template',
+      title: 'Food4U',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
       initialRoute: '/',

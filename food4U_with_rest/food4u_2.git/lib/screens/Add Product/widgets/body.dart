@@ -55,19 +55,18 @@ class AddProductBody extends StatelessWidget {
                           hintText: 'Food Description'),
                       validator: (value) =>
                           value.isEmpty ? 'Enter a description' : null,
-                      onChanged: (value) => viewmodel.name = value),
+                      onChanged: (value) => viewmodel.description = value),
                   SizedBox(height: 10.0),
                   //______________Price_____________
                   TextFormField(
                       decoration: inputDecoration.copyWith(hintText: 'Price'),
                       keyboardType: TextInputType.number,
-                      inputFormatters: <TextInputFormatter>[
-                        FilteringTextInputFormatter.digitsOnly
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(RegExp('[0-9.,]')),
                       ],
                       validator: (value) =>
                           value.isEmpty ? 'Enter Price' : null,
-                      onChanged: (value) =>
-                          viewmodel.price = double.parse(value)),
+                      onChanged: (value) => viewmodel.price = value),
                   SizedBox(height: 10.0),
 
                   _buildButtons(context, viewmodel),
@@ -86,7 +85,7 @@ class AddProductBody extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ElevatedButton(
-          child: Text('Register'),
+          child: Text('Register Product'),
           onPressed: () => _onAddFood(context, viewmodel),
         ),
         SizedBox(width: 10.0),

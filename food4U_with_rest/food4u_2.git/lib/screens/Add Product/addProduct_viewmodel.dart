@@ -29,10 +29,10 @@ class AddProductViewModel extends Viewmodel {
     turnIdle();
   }
 
-  get price => double.parse(_food.price);
+  get price => _food.price;
   set price(value) {
     turnBusy();
-    _food.price = double.parse(value);
+    _food.price = value;
     turnIdle();
   }
 
@@ -43,7 +43,7 @@ class AddProductViewModel extends Viewmodel {
       name: name,
       ownerName: ownerName,
       description: description,
-      photoUrl: "",
+      photoUrl: "assets/images/default.png",
       price: price,
     ));
     turnIdle();

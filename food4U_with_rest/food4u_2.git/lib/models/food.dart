@@ -3,7 +3,7 @@ class Food {
   String _ownerName;
   String _description;
   String _photoUrl;
-  double _price;
+  String _price;
   String _id;
 
   get name => _name;
@@ -29,7 +29,7 @@ class Food {
       String ownerName = '',
       String description = '',
       String photoUrl = '',
-      double price = 0.0,
+      String price = '',
       String id = ''})
       : _name = name,
         _ownerName = ownerName,
@@ -54,7 +54,7 @@ class Food {
           ownerName: json['ownerName'],
           description: json['description'],
           photoUrl: json['photoUrl'],
-          price: double.parse(json['price']),
+          price: json['price'],
           id: json['id'],
         );
 
