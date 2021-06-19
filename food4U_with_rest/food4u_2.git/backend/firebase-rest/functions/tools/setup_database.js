@@ -13,45 +13,61 @@
 // the document name will be auto-generated
 
 const _collectionsJson = {
-  foods:[
-    {
-      name:"Kek Lapis",
-      description: "enak dimakan begitu sahaja",
-      ownerName: "Afiq Restaurant",
-      photoUrl: "assets/images/kek_lapis.jpg",
-      price : "8.0"
-   },
-   {
-      name:"Chiyu Topokki",
-      description: "Topokki seperti korea",
-      ownerName: "Afiq Restaurant",
-      photoUrl: "assets/images/topokki.jpg",
-      price : "4.0"
-   },
-   {
-      name:"Sushi rolls",
-      description: "Rasai sushi roll jepun sebenar",
-      ownerName: "Bob Restaurant",
-      photoUrl: "assets/images/sushi_rolls.jpg",
-      price : "2.0"
-   }
-  ],
-  // users: [
+  // foods:[
   //   {
-  //     id: "user1",
-  //     name: "Alexander Holmes",
-  //     photoUrl: "https://randomuser.me/api/portraits/thumb/men/75.jpg",
-  //     login: "alex",
-  //     password: "123"
-  //   },
-  //   {
-  //     id: "user2",
-  //     name: "Jessica Walters",
-  //     photoUrl: "https://randomuser.me/api/portraits/thumb/women/75.jpg",
-  //     login: "jessica",
-  //     password: "123"
-  //   }
+  //     name:"Kek Lapis",
+  //     description: "enak dimakan begitu sahaja",
+  //     ownerName: "Afiq Restaurant",
+  //     photoUrl: "assets/images/kek_lapis.jpg",
+  //     price : "8.0"
+  //  },
+  //  {
+  //     name:"Chiyu Topokki",
+  //     description: "Topokki seperti korea",
+  //     ownerName: "Afiq Restaurant",
+  //     photoUrl: "assets/images/topokki.jpg",
+  //     price : "4.0"
+  //  },
+  //  {
+  //     name:"Sushi rolls",
+  //     description: "Rasai sushi roll jepun sebenar",
+  //     ownerName: "Bob Restaurant",
+  //     photoUrl: "assets/images/sushi_rolls.jpg",
+  //     price : "2.0"
+  //  }
   // ],
+  users: [
+    {
+      id: "user1",
+      name: "John Doe",
+      photoUrl: "",
+      login: "john",
+      password: "123",
+      phoneNo: "0124235423",
+      address: "Skudai, JB",
+      roles: "seller"
+    },
+    {
+      id: "user2",
+      name: "Amir Syafiq",
+      photoUrl: "",
+      login: "amir",
+      password: "123",
+      phoneNo: "01189223543",
+      address:"Pagoh",
+      roles: "seller"
+    },
+    {
+      id:"",
+      name:"Muaz Amir",
+      photoUrl: "",
+      login: "muazam",
+      password: "1234",
+      phoneNo: "0113456923",
+      address:"Sungai Petani",
+      roles: "buyer"
+    }
+  ],
   // counters: [
   //   {
   //     id: "counter1",

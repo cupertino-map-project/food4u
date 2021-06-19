@@ -7,6 +7,7 @@ class User {
   String _password;
   String _phoneNo;
   String _address;
+  String _roles;
 
   // ignore: unnecessary_getters_setters
   get id => _id;
@@ -31,6 +32,9 @@ class User {
   get address => _address;
   set address(value) => _address = value;
 
+  get roles => _roles;
+  set roles(value) => _roles = value;
+
   User(
       {dynamic id,
       String name = '',
@@ -39,14 +43,16 @@ class User {
       String password = '',
       String email = '',
       String phoneNo = '',
-      String address = ''})
+      String address = '',
+      String roles = ''})
       : _id = id,
         _name = name,
         _photoUrl = photoUrl,
         _login = login,
         _password = password,
         _phoneNo = phoneNo,
-        _address = address;
+        _address = address,
+        _roles = roles;
 
   User.copy(User from)
       : this(
@@ -56,18 +62,19 @@ class User {
             login: from.login,
             password: from.password,
             phoneNo: from.phoneNo,
-            address: from.address);
+            address: from.address,
+            roles: from.roles);
 
   User.fromJson(Map<String, dynamic> json)
       : this(
-          id: json['id'],
-          name: json['name'],
-          photoUrl: json['photoUrl'],
-          login: json['login'],
-          password: json['password'],
-          phoneNo: json['phoneNo'],
-          address: json['address'],
-        );
+            id: json['id'],
+            name: json['name'],
+            photoUrl: json['photoUrl'],
+            login: json['login'],
+            password: json['password'],
+            phoneNo: json['phoneNo'],
+            address: json['address'],
+            roles: json['roles']);
 
   Map<String, dynamic> toJson() => {
         'id': id,
@@ -77,5 +84,6 @@ class User {
         'password': password,
         'phoneNo': phoneNo,
         'address': address,
+        'roles': roles,
       };
 }

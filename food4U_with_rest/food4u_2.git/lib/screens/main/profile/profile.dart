@@ -31,7 +31,7 @@ class _ProfileState extends State<Profile> {
             SizedBox(
               height: 5,
             ),
-            _profileName("${_viewmodel.user.name}"),
+            _profileName("${_viewmodel.user.name}", "${_viewmodel.user.roles}"),
             SizedBox(
               height: 14,
             ),
@@ -79,12 +79,12 @@ class _ProfileState extends State<Profile> {
     );
   }
 
-  Widget _profileName(String name) {
+  Widget _profileName(String name, String roles) {
     return Container(
       width: MediaQuery.of(context).size.width * 0.80, //80% of width,
       child: Center(
         child: Text(
-          name,
+          '${name}\n  (${roles.toUpperCase()})',
           style: TextStyle(
               color: Colors.black, fontSize: 24, fontWeight: FontWeight.w800),
         ),

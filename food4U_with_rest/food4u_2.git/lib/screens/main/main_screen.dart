@@ -1,6 +1,9 @@
+import 'dart:ffi';
+
 import 'package:exercise3/screens/main/food_viewmodel.dart';
 import 'package:exercise3/screens/main/profile/profile_viewmodel.dart';
 import 'package:exercise3/screens/main/widgets/bar/unsigned_body.dart';
+import 'package:exercise3/screens/main/widgets/float.dart';
 import 'package:flutter/material.dart';
 
 import 'profile/profile.dart';
@@ -63,7 +66,9 @@ class _MainScreenState extends State<MainScreen> {
                   selectedItemColor: Colors.amber[800],
                   onTap: _onItemTapped,
                 ),
-                //floatingActionButton: Float(_counterViewmodel),
+                floatingActionButton: Float(
+                  mainViewmodel: mainViewmodel,
+                ),
               );
             }
 

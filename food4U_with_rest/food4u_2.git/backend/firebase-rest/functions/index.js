@@ -4,8 +4,9 @@
 // Update: 4 Jun 2021
 
 'use strict'
-const functions = require("firebase-functions")
+
 //const admin = require('./api/models/firebase/firebase_admin')
+const functions = require("firebase-functions")
 const express = require("express")
 const app = express();
 const usersRouter = require('./api/controllers/users_controller')

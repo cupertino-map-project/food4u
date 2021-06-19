@@ -50,12 +50,14 @@ class RegisterViewModel extends Viewmodel {
     turnBusy();
     final User _user = await _service.register(
         user: new User(
-            name: name,
-            login: username,
-            photoUrl: '',
-            password: password,
-            phoneNo: phoneNo,
-            address: address));
+      name: name,
+      login: username,
+      photoUrl: '',
+      password: password,
+      phoneNo: phoneNo,
+      address: address,
+      roles: "buyer",
+    ));
     turnIdle();
     return _user;
   }
