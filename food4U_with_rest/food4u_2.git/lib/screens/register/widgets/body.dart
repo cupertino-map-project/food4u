@@ -1,5 +1,6 @@
 import 'package:exercise3/models/user.dart';
 import 'package:exercise3/screens/register/register_viewmodel.dart';
+import 'package:exercise3/screens/register/widgets/button_widget.dart';
 import 'package:exercise3/screens/view.dart';
 import 'package:exercise3/shared/constants.dart';
 import 'package:flutter/material.dart';
@@ -71,6 +72,26 @@ class RegisterBody extends StatelessWidget {
                       validator: (value) =>
                           value.isEmpty ? 'Enter Address' : null,
                       onChanged: (value) => viewmodel.address = value),
+                  //______________Profile Picture_______
+                  ButtonWidget(
+                    text: 'Select File',
+                    icon: Icons.attach_file,
+                    onClicked: null,
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    'fileName',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                  ),
+                  //_________Upload Button___________
+                  SizedBox(height: 28),
+                  ButtonWidget(
+                    text: 'Upload File',
+                    icon: Icons.cloud_upload_outlined,
+                    onClicked: null,
+                  ),
+                  SizedBox(height: 20),
+                  //task != null ? buildUploadStatus(task!) : Container(),
                   SizedBox(height: 10.0),
                   _buildButtons(context, viewmodel),
                   SizedBox(height: 12.0),
