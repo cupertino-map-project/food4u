@@ -22,7 +22,7 @@ class ViewCartScreen extends StatelessWidget {
               style: TextStyle(color: Colors.black),
             ),
             Text(
-              "4 items",
+              "1 items",
               style: Theme.of(context).textTheme.caption,
             )
           ],
@@ -81,7 +81,7 @@ class CheckOutCart extends StatelessWidget {
                   text: "Total:\n",
                   children: [
                     TextSpan(
-                        text: "\RM337.15",
+                        text: "\RM8.00",
                         style: TextStyle(fontSize: 16, color: Colors.black)),
                   ],
                 ),
@@ -94,7 +94,9 @@ class CheckOutCart extends StatelessWidget {
                       size: 20.0,
                       color: Colors.orange,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/buy');
+                    },
                     label: const Text('Check out')
                     //text: "Check Out",
                     // press: () {},

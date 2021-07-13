@@ -1,4 +1,9 @@
+import 'package:exercise3/models/food.dart';
 import 'package:exercise3/screens/viewproduct/component/constants.dart';
+import 'package:exercise3/screens/viewproduct/component/item_image.dart';
+import 'package:exercise3/screens/viewproduct/component/order_button.dart';
+import 'package:exercise3/screens/viewproduct/component/title_price_rating.dart';
+import 'package:exercise3/screens/viewproduct/viewproduct.dart';
 import 'package:flutter/material.dart';
 import 'package:exercise3/models/cart.dart';
 
@@ -9,9 +14,13 @@ class CartItemCard extends StatelessWidget {
   // }) : super(key: key);
 
   // final Cart cart;
+  const CartItemCard({Key key, this.data}) : super(key: key);
+
+  final Food data;
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Row(
       children: [
         Column(
@@ -42,11 +51,10 @@ class CartItemCard extends StatelessWidget {
             const SizedBox(height: 10),
             Text.rich(
               TextSpan(
-                text: "//Price",
+                text: "RM ",
                 style: TextStyle(color: kPrimaryColor),
                 children: [
-                  TextSpan(
-                      text: " xNumOFITEM", style: TextStyle(color: kTextColor))
+                  TextSpan(text: " x1", style: TextStyle(color: kTextColor))
                 ],
               ),
             ),
