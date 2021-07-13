@@ -58,8 +58,8 @@ class TitlePriceRating extends StatelessWidget {
       child: Container(
         alignment: Alignment.topCenter,
         padding: EdgeInsets.symmetric(vertical: 15),
-        height: 66,
-        width: 65,
+        height: 80,
+        width: 85,
         color: kPrimaryColor,
         child: Text(
           "\RM$price",

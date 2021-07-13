@@ -66,23 +66,6 @@ class _BarState extends State<Bar> {
               },
               alignment: Alignment.bottomCenter,
             ),
-            Positioned(
-              child: Stack(
-                children: [
-                  Icon(
-                    Icons.brightness_1,
-                    size: 20.0,
-                    color: Colors.green,
-                  ),
-                  // Positioned(
-                  //     top: 3.0,
-                  //     bottom: 4.0,
-                  //     child: Consumer<CartItemCounter>(
-                  //       builder: (context, counter, _) {},
-                  //     )),
-                ],
-              ),
-            ),
           ],
         ),
       ],

@@ -65,7 +65,8 @@ class ItemInfo extends StatelessWidget {
             press: () {
               Navigator.pushNamed(context, '/buy');
             },
-          )
+          ),
+          SizedBox(height: size.height * 0.05),
         ],
       ),
     );
