@@ -30,6 +30,12 @@ dependencies:
   flutter_spinkit: "^4.1.2"
   flutter_svg: ^0.22.0
   smooth_star_rating: ^1.0.4
+  # upload file to firebase
+  firebase_core: ^1.0.3
+  firebase_storage: ^8.0.3
+
+  # pick file
+  file_picker: ^3.0.1
 
 dev_dependencies:
   flutter_test:

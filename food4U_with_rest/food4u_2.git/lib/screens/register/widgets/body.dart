@@ -1,11 +1,22 @@
+import 'dart:io';
+
 import 'package:exercise3/models/user.dart';
 import 'package:exercise3/screens/register/register_viewmodel.dart';
 import 'package:exercise3/screens/register/widgets/button_widget.dart';
+import 'package:exercise3/screens/register/widgets/firebase_api.dart';
 import 'package:exercise3/screens/view.dart';
 import 'package:exercise3/shared/constants.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
 
-class RegisterBody extends StatelessWidget {
+class RegisterBody extends StatefulWidget {
+  @override
+  _RegisterBodyState createState() => _RegisterBodyState();
+}
+
+class _RegisterBodyState extends State<RegisterBody> {
   final _formKey = GlobalKey<FormState>();
 
   void _onRegister(BuildContext context, RegisterViewModel viewmodel) async {
@@ -18,8 +29,13 @@ class RegisterBody extends StatelessWidget {
     Navigator.pop(context, null);
   }
 
+  UploadTask task;
+
+  File file;
+
   @override
   Widget build(BuildContext context) {
+    final fileName = file != null ? basename(file.path) : 'No File Selected';
     return View(
       viewmodel: RegisterViewModel(),
       builder: (context, viewmodel, _) => Container(
@@ -76,11 +92,11 @@ class RegisterBody extends StatelessWidget {
                   ButtonWidget(
                     text: 'Select File',
                     icon: Icons.attach_file,
-                    onClicked: null,
+                    onClicked: selectFile,
                   ),
                   SizedBox(height: 8),
                   Text(
-                    'fileName',
+                    fileName,
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                   ),
                   //_________Upload Button___________
@@ -88,10 +104,10 @@ class RegisterBody extends StatelessWidget {
                   ButtonWidget(
                     text: 'Upload File',
                     icon: Icons.cloud_upload_outlined,
-                    onClicked: null,
+                    onClicked: uploadFile,
                   ),
                   SizedBox(height: 20),
-                  //task != null ? buildUploadStatus(task!) : Container(),
+                  task != null ? buildUploadStatus(task) : Container(),
                   SizedBox(height: 10.0),
                   _buildButtons(context, viewmodel),
                   SizedBox(height: 12.0),
@@ -103,6 +119,50 @@ class RegisterBody extends StatelessWidget {
           )),
     );
   }
+
+  Future selectFile() async {
+    final result = await FilePicker.platform.pickFiles(allowMultiple: false);
+
+    if (result == null) return;
+    final path = result.files.single.path;
+
+    setState(() => file = File(path));
+  }
+
+  Future uploadFile() async {
+    if (file == null) return;
+
+    final fileName = basename(file.path);
+    final destination = 'files/$fileName';
+
+    task = FirebaseApi.uploadFile(destination, file);
+    setState(() {});
+
+    if (task == null) return;
+
+    final snapshot = await task.whenComplete(() {});
+    final urlDownload = await snapshot.ref.getDownloadURL();
+
+    print('Download-Link: $urlDownload');
+  }
+
+  Widget buildUploadStatus(UploadTask task) => StreamBuilder<TaskSnapshot>(
+        stream: task.snapshotEvents,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            final snap = snapshot.data;
+            final progress = snap.bytesTransferred / snap.totalBytes;
+            final percentage = (progress * 100).toStringAsFixed(2);
+
+            return Text(
+              '$percentage %',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            );
+          } else {
+            return Container();
+          }
+        },
+      );
 
   Row _buildButtons(BuildContext context, RegisterViewModel viewmodel) {
     return Row(
