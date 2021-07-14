@@ -1,3 +1,5 @@
+import 'package:exercise3/models/cart.dart';
+
 class User {
   dynamic
       _id; // Use dynamic type because json-server id is int and firestore id is string
@@ -8,6 +10,7 @@ class User {
   String _phoneNo;
   String _address;
   String _roles;
+  Cart _cart;
 
   // ignore: unnecessary_getters_setters
   get id => _id;
@@ -35,24 +38,29 @@ class User {
   get roles => _roles;
   set roles(value) => _roles = value;
 
-  User(
-      {dynamic id,
-      String name = '',
-      String photoUrl = '',
-      String login = '',
-      String password = '',
-      String email = '',
-      String phoneNo = '',
-      String address = '',
-      String roles = ''})
-      : _id = id,
+  get cart => _cart;
+  set cart(value) => _cart = value;
+
+  User({
+    dynamic id,
+    String name = '',
+    String photoUrl = '',
+    String login = '',
+    String password = '',
+    String email = '',
+    String phoneNo = '',
+    String address = '',
+    String roles = '',
+    Cart cart,
+  })  : _id = id,
         _name = name,
         _photoUrl = photoUrl,
         _login = login,
         _password = password,
         _phoneNo = phoneNo,
         _address = address,
-        _roles = roles;
+        _roles = roles,
+        _cart = cart;
 
   User.copy(User from)
       : this(
@@ -63,7 +71,8 @@ class User {
             password: from.password,
             phoneNo: from.phoneNo,
             address: from.address,
-            roles: from.roles);
+            roles: from.roles,
+            cart: from.cart);
 
   User.fromJson(Map<String, dynamic> json)
       : this(
@@ -74,7 +83,8 @@ class User {
             password: json['password'],
             phoneNo: json['phoneNo'],
             address: json['address'],
-            roles: json['roles']);
+            roles: json['roles'],
+            cart: json['cart']);
 
   Map<String, dynamic> toJson() => {
         'id': id,
@@ -85,5 +95,6 @@ class User {
         'phoneNo': phoneNo,
         'address': address,
         'roles': roles,
+        'cart': cart,
       };
 }
