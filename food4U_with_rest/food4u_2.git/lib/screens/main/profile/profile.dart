@@ -70,8 +70,8 @@ class _ProfileState extends State<Profile> {
               shape: BoxShape.circle,
               image: DecorationImage(
                   fit: BoxFit.fill,
-                  image: AssetImage(
-                      'assets/images/default.png')), // color: Colors.orange[100],
+                  image: NetworkImage(
+                      _viewmodel.user.photoUrl)), // color: Colors.orange[100],
             ),
           ),
         ),

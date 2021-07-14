@@ -46,13 +46,23 @@ class RegisterViewModel extends Viewmodel {
     turnIdle();
   }
 
+  get photoUrl => _user.photoUrl;
+  void setPhotoUrl(value) {
+    print(name);
+    print(address);
+    print(photoUrl);
+    turnBusy();
+    _user.photoUrl = value;
+    turnIdle();
+  }
+
   Future<User> register() async {
     turnBusy();
     final User _user = await _service.register(
         user: new User(
       name: name,
       login: username,
-      photoUrl: '',
+      photoUrl: photoUrl,
       password: password,
       phoneNo: phoneNo,
       address: address,
