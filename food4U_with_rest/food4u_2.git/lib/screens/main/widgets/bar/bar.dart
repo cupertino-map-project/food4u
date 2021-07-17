@@ -1,6 +1,7 @@
 import 'package:exercise3/models/food.dart';
 import 'package:exercise3/models/cart.dart';
 import 'package:exercise3/screens/main/food_viewmodel.dart';
+import 'package:exercise3/screens/main/main_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -9,10 +10,17 @@ class Bar extends StatefulWidget implements PreferredSizeWidget {
   Size get preferredSize => Size.fromHeight(60.0);
   _BarState createState() => _BarState();
   final FoodViewModel _foodViewModel;
-  Bar(FoodViewModel foodViewModel) : _foodViewModel = foodViewModel;
+  final MainViewmodel _mainViewmodel;
+  Bar(FoodViewModel foodViewModel, MainViewmodel mainViewmodel)
+      : _foodViewModel = foodViewModel,
+        _mainViewmodel = mainViewmodel;
 }
 
 class _BarState extends State<Bar> {
+  // _BarState(MainViewmodel mainViewmodel) : _mainViewmodel = mainViewmodel;
+  // final MainViewmodel _mainViewmodel;
+
+  //final User user;
   @override
   void _filterFoodList(value) {
     setState(() {

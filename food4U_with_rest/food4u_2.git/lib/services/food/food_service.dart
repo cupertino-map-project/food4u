@@ -1,3 +1,5 @@
+import 'package:exercise3/models/cart.dart';
+
 import '../../models/food.dart';
 
 abstract class FoodService {

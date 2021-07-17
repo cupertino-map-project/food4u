@@ -1,15 +1,22 @@
+import 'package:exercise3/models/cart.dart';
 import 'package:exercise3/models/food.dart';
 import 'package:exercise3/screens/viewproduct/component/constants.dart';
 import 'package:exercise3/screens/viewproduct/component/item_image.dart';
 import 'package:exercise3/screens/viewproduct/component/order_button.dart';
 import 'package:exercise3/screens/viewproduct/component/title_price_rating.dart';
 import 'package:exercise3/screens/viewproduct/viewproduct.dart';
+import 'package:exercise3/screens/viewproduct/viewproductmodel.dart';
+import 'package:exercise3/shared/pallete.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {
-  const Body({data}) : _data = data;
+  const Body({data, viewProductModel})
+      : _data = data,
+        _viewProductModel = viewProductModel;
 
   final Food _data;
+  final ViewProductModel _viewProductModel;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,17 +25,44 @@ class Body extends StatelessWidget {
           imgSrc: _data.photoUrl,
         ),
         Expanded(
-          child: ItemInfo(data: _data),
+          child: ItemInfo(_data, _viewProductModel),
         ),
       ],
     );
   }
 }
 
-class ItemInfo extends StatelessWidget {
-  const ItemInfo({Key key, this.data}) : super(key: key);
+class ItemInfo extends StatefulWidget {
+  const ItemInfo(Food data, ViewProductModel viewProductModel)
+      : _viewProductModel = viewProductModel,
+        _data = data;
 
-  final Food data;
+  final ViewProductModel _viewProductModel;
+  final Food _data;
+
+  @override
+  _ItemInfoState createState() => _ItemInfoState(_data, _viewProductModel);
+}
+
+class _ItemInfoState extends State<ItemInfo> {
+  final Food _data;
+  final ViewProductModel _viewProductModel;
+
+  _ItemInfoState(Food data, ViewProductModel viewProductModel)
+      : _data = data,
+        _viewProductModel = viewProductModel;
+
+  void onAddToCart(ViewProductModel viewProductModel, Food food) {
+    print("food id " + food.id);
+    print(" user id " + _viewProductModel.user.id);
+    setState(() {
+      _viewProductModel.user.setCart(food);
+      _viewProductModel.user.setCartCode(food.id);
+    });
+    _viewProductModel.updateUser(_viewProductModel.user);
+    Navigator.pop(context, _viewProductModel.user);
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -44,29 +78,30 @@ class ItemInfo extends StatelessWidget {
       ),
       child: Column(
         children: <Widget>[
-          shopeName(name: data.ownerName),
+          shopeName(name: _data.ownerName),
           TitlePriceRating(
-            name: "${data.name}",
+            name: "${_data.name}",
             numOfReviews: 24,
             rating: 4,
-            price: data.price,
+            price: _data.price,
             onRatingChanged: (value) {},
           ),
           Text(
-            "${data.description}",
+            "${_data.description}",
             style: TextStyle(
               height: 1.5,
             ),
           ),
           SizedBox(height: size.height * 0.1),
           // Free space  10% of total height
-          OrderButton(
-            size: size,
-            press: () {
-              Navigator.pushNamed(context, '/buy');
-            },
-          ),
-          SizedBox(height: size.height * 0.05),
+          TextButton(
+            onPressed: () => onAddToCart(_viewProductModel, _data),
+            child: Text(
+              'Add To Cart',
+              style: kBodyText.copyWith(
+                  fontWeight: FontWeight.bold, color: Colors.black),
+            ),
+          )
         ],
       ),
     );

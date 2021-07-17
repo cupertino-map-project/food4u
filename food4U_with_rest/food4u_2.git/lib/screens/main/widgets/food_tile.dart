@@ -1,13 +1,15 @@
+import 'package:exercise3/models/user.dart';
 import 'package:flutter/material.dart';
 import '../../../models/food.dart';
 
 class FoodTile extends StatelessWidget {
   final Food food;
+  final User user;
 
-  FoodTile({this.food});
+  FoodTile({this.food, this.user});
 
-  void _todetail(BuildContext context, _id) {
-    Navigator.pushNamed(context, '/viewproduct', arguments: Food.copy(food));
+  void _todetail(BuildContext context, _id, user) {
+    Navigator.pushNamed(context, '/viewproduct', arguments: [food, user]);
   }
 
   @override
@@ -32,7 +34,7 @@ class FoodTile extends StatelessWidget {
           ),
           subtitle: Text('${food.ownerName}'),
           trailing: Text('RM${food.price}'),
-          onTap: () => _todetail(context, food),
+          onTap: () => _todetail(context, food, user),
         ),
       ),
     );

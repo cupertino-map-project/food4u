@@ -1,36 +1,41 @@
+import 'package:exercise3/screens/main/main_viewmodel.dart';
+import 'package:exercise3/screens/view.dart';
 import 'package:flutter/material.dart';
-import 'package:exercise3/models/food.dart';
+
 import 'package:exercise3/screens/cart/widget/body.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class ViewCartScreen extends StatelessWidget {
   static const routeName = "/viewcart";
-  static Route route({data}) =>
-      MaterialPageRoute(builder: (context) => ViewCartScreen(data: data));
-  Food _data;
-  get data => _data;
-  ViewCartScreen({data}) : _data = data;
+  static Route route() =>
+      MaterialPageRoute(builder: (context) => ViewCartScreen());
+
+  //final User _user;
+  //ViewCartScreen({user}) : _user = user;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Column(
-          children: [
-            Text(
-              "Your Cart",
-              style: TextStyle(color: Colors.black),
+    return View(
+        viewmodel: MainViewmodel(),
+        builder: (_, mainViewModel, __) {
+          return Scaffold(
+            appBar: AppBar(
+              title: Column(
+                children: [
+                  Text(
+                    "Your Cart",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  Text(
+                    mainViewModel.user.cartList.length.toString() + " items",
+                    style: Theme.of(context).textTheme.caption,
+                  )
+                ],
+              ),
             ),
-            Text(
-              "1 items",
-              style: Theme.of(context).textTheme.caption,
-            )
-          ],
-        ),
-      ),
-      body: Body(),
-      bottomNavigationBar: CheckOutCart(),
-    );
+            body: Body(mainViewmodel: mainViewModel),
+            bottomNavigationBar: CheckOutCart(),
+          );
+        });
   }
 }
 

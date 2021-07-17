@@ -1,5 +1,6 @@
 import 'package:exercise3/models/food.dart';
 import 'package:exercise3/screens/main/food_viewmodel.dart';
+import 'package:exercise3/screens/main/main_viewmodel.dart';
 import 'package:exercise3/screens/main/widgets/food_tile.dart';
 import 'package:exercise3/screens/view.dart';
 import 'package:exercise3/services/food/food_service.dart';
@@ -9,7 +10,10 @@ import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {
   final FoodViewModel _foodViewModel;
-  const Body(FoodViewModel foodViewModel) : _foodViewModel = foodViewModel;
+  final MainViewmodel _mainViewmodel;
+  const Body(FoodViewModel foodViewModel, MainViewmodel mainViewmodel)
+      : _foodViewModel = foodViewModel,
+        _mainViewmodel = mainViewmodel;
 
   // void initState() {
   //   FoodServiceRest().getAllFood().then((value) => widget._foodViewModel
@@ -25,6 +29,9 @@ class Body extends StatelessWidget {
           _foodViewModel.foodList = snapshot.data;
           _foodViewModel.filteredFoodList = snapshot.data;
           // _foodViewModel.foodList;
+          // for (int i = 0; i < _mainViewmodel.user.cart.length; i++) {
+          //   print("dalam home" + _mainViewmodel.user.cartList[i].name);
+          // }
           return _buildFoodListView();
         } else {
           return Center(child: CircularProgressIndicator());
@@ -39,7 +46,8 @@ class Body extends StatelessWidget {
       return ListView.builder(
         itemCount: _foodViewModel.foodList.length,
         itemBuilder: (context, index) {
-          return FoodTile(food: _foodViewModel.foodList[index]);
+          return FoodTile(
+              food: _foodViewModel.foodList[index], user: _mainViewmodel.user);
         },
       );
     else

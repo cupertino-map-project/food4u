@@ -41,13 +41,13 @@ class _MainScreenState extends State<MainScreen> {
               // final _profileViewModel =
               //     ProfileViewModel(mainViewmodel: mainViewmodel);
               List<Widget> _bottomBarOption = <Widget>[
-                Container(child: Body(_foodViewModel)),
+                Container(child: Body(_foodViewModel, mainViewmodel)),
                 Container(
                   child: Profile(mainViewmodel),
                 ),
               ];
               return Scaffold(
-                appBar: Bar(_foodViewModel),
+                appBar: Bar(_foodViewModel, mainViewmodel),
                 body: Container(
                   child: _bottomBarOption.elementAt(_selectedIndex),
                 ),

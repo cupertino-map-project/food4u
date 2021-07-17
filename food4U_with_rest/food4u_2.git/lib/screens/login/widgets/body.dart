@@ -1,3 +1,4 @@
+import 'package:exercise3/models/food.dart';
 import 'package:exercise3/shared/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +9,14 @@ import '../login_viewmodel.dart';
 class Body extends StatelessWidget {
   void _onLogin(BuildContext context, LoginViewmodel viewmodel) async {
     final User _user = await viewmodel.authenticate();
+    final List<Food> food = await viewmodel.getFood(foodID: _user.cart);
     if (_user != null) Navigator.pop(context, _user);
+    if (food != null) {
+      for (int i = 0; i < food.length; i++) {
+        _user.setCartList(value: food[i]);
+        print("dah jadi print food" + _user.cartList[i].name);
+      }
+    }
   }
 
   void _onCancel(BuildContext context, LoginViewmodel viewmodel) {

@@ -1,5 +1,7 @@
 import 'package:exercise3/models/cart.dart';
 
+import 'food.dart';
+
 class User {
   dynamic
       _id; // Use dynamic type because json-server id is int and firestore id is string
@@ -10,7 +12,8 @@ class User {
   String _phoneNo;
   String _address;
   String _roles;
-  Cart _cart;
+  List<dynamic> _cart;
+  List<Food> _cartList = [];
 
   // ignore: unnecessary_getters_setters
   get id => _id;
@@ -41,6 +44,20 @@ class User {
   get cart => _cart;
   set cart(value) => _cart = value;
 
+  get cartList => _cartList;
+
+  void setCartCode(String value) {
+    _cart.add(value);
+  }
+
+  void setCart(Food value) {
+    _cartList.add(value);
+  }
+
+  void setCartList({Food value}) {
+    _cartList.add(value);
+  }
+
   User({
     dynamic id,
     String name = '',
@@ -51,7 +68,7 @@ class User {
     String phoneNo = '',
     String address = '',
     String roles = '',
-    Cart cart,
+    List cart,
   })  : _id = id,
         _name = name,
         _photoUrl = photoUrl,

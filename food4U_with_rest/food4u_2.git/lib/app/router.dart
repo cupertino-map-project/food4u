@@ -23,7 +23,8 @@ Route<dynamic> createRoute(settings) {
       return RegisterScreen.route();
 
     case '/viewproduct':
-      return ViewProductScreen.route(data: settings.arguments as Food);
+      return ViewProductScreen.route(
+          data: settings.arguments[0], user: settings.arguments[1]);
 
     case '/viewcart':
       return ViewCartScreen.route();
