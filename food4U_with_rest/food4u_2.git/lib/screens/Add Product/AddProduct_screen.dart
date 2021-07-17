@@ -1,4 +1,6 @@
+import 'package:exercise3/screens/Add%20Product/addProduct_viewmodel.dart';
 import 'package:exercise3/screens/Add%20Product/widgets/body.dart';
+import 'package:exercise3/screens/view.dart';
 import 'package:flutter/material.dart';
 
 class AddProductScreen extends StatelessWidget {
@@ -9,9 +11,13 @@ class AddProductScreen extends StatelessWidget {
     return WillPopScope(
       onWillPop: () => Future.value(false),
       child: SafeArea(
-        child: Scaffold(
-          body: AddProductBody(),
-        ),
+        child: View(
+            viewmodel: AddProductViewModel(),
+            builder: (_, viewModel, __) {
+              return Scaffold(
+                body: AddProductBody(viewModel),
+              );
+            }),
       ),
     );
   }

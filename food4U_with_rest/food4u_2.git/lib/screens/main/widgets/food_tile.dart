@@ -26,7 +26,12 @@ class FoodTile extends StatelessWidget {
               maxWidth: 70,
               maxHeight: 60,
             ),
-            child: Image.asset('${food.photoUrl}', fit: BoxFit.cover),
+            //child: Image.asset('${food.photoUrl}', fit: BoxFit.cover),
+            child: Ink.image(
+              image: NetworkImage(food.photoUrl),
+              height: 150,
+              fit: BoxFit.cover,
+            ),
           ),
           title: Text(
             '${food.name}',

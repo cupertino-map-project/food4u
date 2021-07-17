@@ -36,6 +36,16 @@ class AddProductViewModel extends Viewmodel {
     turnIdle();
   }
 
+  get photoUrl => _food.photoUrl;
+  void setPhotoUrl(value) {
+    print(name);
+    //print(address);
+    print(photoUrl);
+    turnBusy();
+    _food.photoUrl = value;
+    turnIdle();
+  }
+
   Future<Food> addFood() async {
     turnBusy();
     final Food _food = await _service.addFood(
@@ -43,7 +53,7 @@ class AddProductViewModel extends Viewmodel {
       name: name,
       ownerName: ownerName,
       description: description,
-      photoUrl: "assets/images/default.png",
+      photoUrl: photoUrl,
       price: price,
     ));
     turnIdle();
