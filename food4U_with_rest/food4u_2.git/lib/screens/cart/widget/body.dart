@@ -31,7 +31,7 @@ class Body extends StatelessWidget {
                   maxWidth: 70,
                   maxHeight: 60,
                 ),
-                child: Image.asset(
+                child: Image.network(
                     '${_mainViewmodel.user.cartList[index].photoUrl}',
                     fit: BoxFit.cover),
               ),

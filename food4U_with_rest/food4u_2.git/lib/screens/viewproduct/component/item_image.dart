@@ -10,7 +10,7 @@ class ItemImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Image.asset(
+    return Image.network(
       imgSrc,
       height: size.height * 0.25,
       width: double.infinity,
