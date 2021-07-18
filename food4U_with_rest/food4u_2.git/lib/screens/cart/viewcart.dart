@@ -1,3 +1,4 @@
+import 'package:exercise3/screens/cart/widget/bottomNavBar.dart';
 import 'package:exercise3/screens/main/main_viewmodel.dart';
 import 'package:exercise3/screens/view.dart';
 import 'package:flutter/material.dart';
@@ -78,37 +79,7 @@ class CheckOutCart extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text.rich(
-                TextSpan(
-                  text: "Total:\n",
-                  children: [
-                    TextSpan(
-                        text: "\RM8.00",
-                        style: TextStyle(fontSize: 16, color: Colors.black)),
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: 190,
-                child: FloatingActionButton.extended(
-                    icon: Icon(
-                      Icons.directions_car_outlined,
-                      size: 20.0,
-                      color: Colors.orange,
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/buy');
-                    },
-                    label: const Text('Check out')
-                    //text: "Check Out",
-                    // press: () {},
-                    ),
-              )
-            ],
-          )
+          BottomCart(),
         ],
       ),
     );
