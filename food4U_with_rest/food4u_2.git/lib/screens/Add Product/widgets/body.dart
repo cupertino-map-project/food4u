@@ -26,9 +26,13 @@ class _AddProductBodyState extends State<AddProductBody> {
   _AddProductBodyState(AddProductViewModel viewModel) : _viewmodel = viewModel;
 
   void _onAddFood(BuildContext context, AddProductViewModel viewmodel) async {
-    final Food _food = await viewmodel.addFood();
-    print(_food.id);
-    if (_food != null) Navigator.pop(context, _food);
+    onAddProduct(viewmodel);
+    Navigator.pop(context);
+  }
+
+  void onAddProduct(AddProductViewModel viewModel) async {
+    final Food _food = await viewModel.addFood();
+    viewModel.setFood(_food);
   }
 
   void _onCancel(BuildContext context, AddProductViewModel viewmodel) {

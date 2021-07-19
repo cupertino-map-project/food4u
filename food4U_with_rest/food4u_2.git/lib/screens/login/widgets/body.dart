@@ -14,7 +14,7 @@ class Body extends StatelessWidget {
     if (food != null) {
       for (int i = 0; i < food.length; i++) {
         _user.setCartList(value: food[i]);
-        print("dah jadi print food" + _user.cartList[i].name);
+        // print("dah jadi print food" + _user.cartList[i].name);
       }
     }
   }

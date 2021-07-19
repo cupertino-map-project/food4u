@@ -9,7 +9,11 @@ class RegisterViewModel extends Viewmodel {
   User _user = User();
 
   get user => _user;
-  set user(value) => _user = value;
+  // set user(value) => _user = value;
+  void setUser(User value) {
+    print("user is set");
+    this._user = value;
+  }
 
   get username => _user.login;
   set username(value) {
@@ -48,9 +52,9 @@ class RegisterViewModel extends Viewmodel {
 
   get photoUrl => _user.photoUrl;
   void setPhotoUrl(value) {
-    print(name);
-    print(address);
-    print(photoUrl);
+    // print(name);
+    // print(address);
+    // print(photoUrl);
     turnBusy();
     _user.photoUrl = value;
     turnIdle();
@@ -67,6 +71,7 @@ class RegisterViewModel extends Viewmodel {
       phoneNo: phoneNo,
       address: address,
       roles: "buyer",
+      cart: ["J25AyK5ZYZQ0jkY3Wt4q"],
     ));
     turnIdle();
     return _user;

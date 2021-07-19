@@ -26,9 +26,17 @@ class _RegisterBodyState extends State<RegisterBody> {
   _RegisterBodyState(RegisterViewModel viewModel) : _viewmodel = viewModel;
 
   void _onRegister(BuildContext context, RegisterViewModel viewmodel) async {
-    final User _user = await viewmodel.register();
-    print(_user.id);
-    if (_user != null) Navigator.pop(context, _user);
+    //User _user = await _onReTwo(viewmodel);
+    getRegister(viewmodel);
+    Navigator.pop(context);
+    // } else {
+    //   Navigator.pushNamed(context, '/login');
+    // }
+  }
+
+  void getRegister(RegisterViewModel viewmodel) async {
+    User _user = await viewmodel.register();
+    viewmodel.setUser(_user);
   }
 
   void _onCancel(BuildContext context, RegisterViewModel viewmodel) {

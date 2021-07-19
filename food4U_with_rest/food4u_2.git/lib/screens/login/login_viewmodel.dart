@@ -61,7 +61,7 @@ class LoginViewmodel extends Viewmodel {
 
     for (int i = 0; i < foodID.length; i++) {
       final Food f = await _userService.getFoodbyID(foodId: foodID[i]);
-      print(f.name);
+
       if (f != null) {
         food.add(f);
       }

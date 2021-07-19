@@ -1,6 +1,8 @@
+import 'package:exercise3/main.dart';
 import 'package:exercise3/screens/cart/widget/bottomNavBar.dart';
 import 'package:exercise3/screens/main/main_viewmodel.dart';
 import 'package:exercise3/screens/view.dart';
+import 'package:exercise3/shared/loading.dart';
 import 'package:flutter/material.dart';
 
 import 'package:exercise3/screens/cart/widget/body.dart';
@@ -16,27 +18,29 @@ class ViewCartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return View(
-        viewmodel: MainViewmodel(),
-        builder: (_, mainViewModel, __) {
-          return Scaffold(
-            appBar: AppBar(
-              title: Column(
-                children: [
-                  Text(
-                    "Your Cart",
-                    style: TextStyle(color: Colors.black),
+            viewmodel: MainViewmodel(),
+            builder: (_, mainViewModel, __) {
+              return Scaffold(
+                appBar: AppBar(
+                  title: Column(
+                    children: [
+                      Text(
+                        "Your Cart",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      Text(
+                        mainViewModel.user.cartList.length.toString() +
+                            " items",
+                        style: Theme.of(context).textTheme.caption,
+                      )
+                    ],
                   ),
-                  Text(
-                    mainViewModel.user.cartList.length.toString() + " items",
-                    style: Theme.of(context).textTheme.caption,
-                  )
-                ],
-              ),
-            ),
-            body: Body(mainViewmodel: mainViewModel),
-            bottomNavigationBar: CheckOutCart(),
-          );
-        });
+                ),
+                body: Body(mainViewmodel: mainViewModel),
+                bottomNavigationBar: CheckOutCart(),
+              );
+            }) ??
+        Container(width: 0.0, height: 0.0);
   }
 }
 

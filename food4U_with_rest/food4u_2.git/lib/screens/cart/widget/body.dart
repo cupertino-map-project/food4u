@@ -1,5 +1,6 @@
 import 'package:exercise3/screens/main/main_viewmodel.dart';
 import 'package:exercise3/screens/view.dart';
+import 'package:exercise3/shared/loading.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {
@@ -9,10 +10,14 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return View(
-      viewmodel: MainViewmodel(),
-      builder: (_, _mainViewmodel, __) => _buildListView(),
-    );
+    if (_mainViewmodel.user.cartList.length > 0) {
+      return View(
+        viewmodel: MainViewmodel(),
+        builder: (_, _mainViewmodel, __) => _buildListView(),
+      );
+    } else {
+      Container(width: 0.0, height: 0.0);
+    }
   }
 
   ListView _buildListView() {

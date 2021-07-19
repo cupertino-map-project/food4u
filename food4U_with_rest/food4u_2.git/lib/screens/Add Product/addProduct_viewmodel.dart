@@ -8,6 +8,11 @@ class AddProductViewModel extends Viewmodel {
 
   Food _food = Food();
 
+  get food => food;
+  void setFood(Food value) {
+    this._food = value;
+  }
+
   get name => _food.name;
   set name(value) {
     turnBusy();
