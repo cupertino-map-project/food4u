@@ -18,4 +18,12 @@ class FoodServiceRest implements FoodService {
     final newFood = await rest.post('foods', data: food);
     return Food.fromJson(newFood);
   }
+
+  Future<Food> getFood(String name) async {
+    String foodsname = 'foods/?name=' + name;
+    final List json = await rest.get(foodsname);
+    if (json == null || json.length == 0) return null;
+    final _result = Food.fromJson(json[0]);
+    return _result;
+  }
 }

@@ -2,6 +2,7 @@ import 'package:exercise3/models/food.dart';
 import 'package:exercise3/models/user.dart';
 import 'package:exercise3/screens/Add%20Product/AddProduct_screen.dart';
 import 'package:exercise3/screens/buy/viewbuy.dart';
+import 'package:exercise3/screens/main/screenSearch.dart';
 import 'package:exercise3/screens/register/register_screen.dart';
 import 'package:exercise3/screens/viewproduct/viewproduct.dart';
 import 'package:exercise3/screens/cart/viewcart.dart';
@@ -34,6 +35,9 @@ Route<dynamic> createRoute(settings) {
 
     case '/addProduct':
       return AddProductScreen.route();
+
+    case '/searchscreen':
+      return SearchScreen.route(name: settings.arguments);
   }
   return null;
 }

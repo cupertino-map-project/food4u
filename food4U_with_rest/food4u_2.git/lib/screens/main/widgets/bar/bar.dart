@@ -31,40 +31,27 @@ class _BarState extends State<Bar> {
     });
   }
 
+  void _onsearch(BuildContext context, FoodViewModel viewmodel) async {
+    Food searchFood = await viewmodel.getFood(viewmodel.search);
+    Navigator.pushNamed(context, '/searchscreen', arguments: searchFood);
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: !widget._foodViewModel.isSearching
-          ? Text('Find Food Near You')
-          : TextField(
-              onChanged: (value) {
-                _filterFoodList(value);
-              },
-              decoration: InputDecoration(
-                  icon: Icon(Icons.search),
-                  hintText: "Search Food Here",
-                  hintStyle: TextStyle(color: Colors.black)),
-            ),
+      title: TextField(
+        onChanged: (value) {
+          widget._foodViewModel.search = value;
+        },
+        decoration: InputDecoration(
+            icon: Icon(Icons.search),
+            hintText: "Search Food Here",
+            hintStyle: TextStyle(color: Colors.black)),
+      ),
       actions: <Widget>[
-        widget._foodViewModel.isSearching
-            ? IconButton(
-                icon: Icon(Icons.cancel),
-                onPressed: () {
-                  setState(() {
-                    this.widget._foodViewModel.isSearching = false;
-                    widget._foodViewModel.filteredFoodList =
-                        widget._foodViewModel.foodList;
-                  });
-                },
-              )
-            : IconButton(
-                icon: Icon(Icons.search),
-                onPressed: () {
-                  setState(() {
-                    this.widget._foodViewModel.isSearching = true;
-                  });
-                },
-              ),
+        IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () => _onsearch(context, widget._foodViewModel)),
         Stack(
           children: [
             IconButton(
