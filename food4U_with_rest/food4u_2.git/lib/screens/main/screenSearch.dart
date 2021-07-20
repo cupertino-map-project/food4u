@@ -1,5 +1,7 @@
 import 'package:exercise3/models/food.dart';
 import 'package:exercise3/screens/main/food_viewmodel.dart';
+import 'package:exercise3/screens/main/main_viewmodel.dart';
+import 'package:exercise3/screens/main/widgets/bar/bar.dart';
 import 'package:flutter/material.dart';
 
 import '../view.dart';
@@ -37,6 +39,12 @@ class _SearchScreenState extends State<SearchScreen> {
                 // mainViewmodel.setUser(widget._user);
                 return Scaffold(
                   body: Body(foodViewmodel, food),
+                  floatingActionButton: FloatingActionButton.extended(
+                    icon: Icon(Icons.arrow_back),
+                    label: const Text('Back to Home'),
+                    backgroundColor: Colors.blue[600],
+                    onPressed: () => Navigator.pop(context),
+                  ),
                 );
               }),
         ));
