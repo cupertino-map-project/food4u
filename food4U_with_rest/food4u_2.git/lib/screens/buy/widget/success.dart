@@ -5,7 +5,8 @@ import 'package:exercise3/screens/viewproduct/component/constants.dart';
 import 'package:flutter/material.dart';
 
 class Success extends StatefulWidget {
-  Success({Key key}) : super(key: key);
+  final String _text;
+  Success({String text}) : _text = text;
 
   @override
   _SuccessState createState() => _SuccessState();
@@ -21,7 +22,7 @@ class _SuccessState extends State<Success> {
         children: [
           EmptySection(),
           SubTitle(
-            subTitleText: 'Your payment was done successfully',
+            subTitleText: widget._text,
           ),
           DefaultButton(
             btnText: 'Ok',

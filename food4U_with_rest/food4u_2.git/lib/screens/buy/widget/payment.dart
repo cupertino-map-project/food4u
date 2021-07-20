@@ -52,7 +52,9 @@ class _PaymentState extends State<Payment> {
             btnText: 'Pay',
             onPressed: () => Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => Success(),
+                builder: (context) => Success(
+                  text: "Your payment has done successfully",
+                ),
               ),
             ),
           ),

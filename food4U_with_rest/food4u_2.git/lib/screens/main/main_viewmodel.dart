@@ -1,9 +1,7 @@
 import 'package:exercise3/services/user/user_service.dart';
 
 import '../../app/dependencies.dart';
-import '../../services/counter/counter_service.dart';
 import '../../models/user.dart';
-import '../../models/counter.dart';
 import '../user/user_viewmodel.dart';
 import '../viewmodel.dart';
 
@@ -44,7 +42,10 @@ class MainViewmodel extends Viewmodel {
             login: currentUsername,
             phoneNo: currentPhoneNo,
             address: currentAddress,
-            password: user.password));
+            password: user.password,
+            photoUrl: user.photoUrl,
+            roles: user.roles,
+            cart: user.cart));
     turnIdle();
     return _user;
   }

@@ -1,5 +1,6 @@
 import 'package:exercise3/models/cart.dart';
 import 'package:exercise3/models/food.dart';
+import 'package:exercise3/screens/buy/widget/success.dart';
 import 'package:exercise3/screens/viewproduct/component/constants.dart';
 import 'package:exercise3/screens/viewproduct/component/item_image.dart';
 import 'package:exercise3/screens/viewproduct/component/order_button.dart';
@@ -60,7 +61,14 @@ class _ItemInfoState extends State<ItemInfo> {
       _viewProductModel.user.setCartCode(food.id);
     });
     _viewProductModel.updateUser(_viewProductModel.user);
-    Navigator.pop(context, _viewProductModel.user);
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => Success(
+          text: "Food Added to Cart Successfully",
+        ),
+      ),
+    );
+    //Navigator.pop(context, _viewProductModel.user);
   }
 
   @override
@@ -94,12 +102,16 @@ class _ItemInfoState extends State<ItemInfo> {
           ),
           SizedBox(height: size.height * 0.1),
           // Free space  10% of total height
-          TextButton(
-            onPressed: () => onAddToCart(_viewProductModel, _data),
-            child: Text(
-              'Add To Cart',
-              style: kBodyText.copyWith(
-                  fontWeight: FontWeight.bold, color: Colors.black),
+          Container(
+            width: 250.0,
+            height: 50.0,
+            child: ElevatedButton(
+              onPressed: () => onAddToCart(_viewProductModel, _data),
+              child: Text(
+                'Add To Cart',
+                style: kBodyText.copyWith(
+                    fontWeight: FontWeight.bold, color: Colors.white),
+              ),
             ),
           )
         ],

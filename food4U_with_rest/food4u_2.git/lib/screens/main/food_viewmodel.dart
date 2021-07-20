@@ -1,11 +1,8 @@
 import 'package:exercise3/models/food.dart';
 import 'package:exercise3/services/food/food_service.dart';
-import 'package:flutter/cupertino.dart';
 
 import '../../app/dependencies.dart';
-import '../../services/counter/counter_service.dart';
 import '../../models/user.dart';
-import '../../models/counter.dart';
 import '../viewmodel.dart';
 import 'main_viewmodel.dart';
 
